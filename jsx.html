@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <!-- ES6之前定义类 -->
+    <!-- <script>
+        function Person(name,age){
+            this.name=name
+            this.age=age
+        }
+        Person.prototype.running=function(){
+            console.log(this.name+this.age)
+        }
+        var p=new Person("poro",12)
+        p.running()
+    </script> -->
+    <!-- ES6之后定义类 -->
+    <!-- <script>
+        class Person {
+            height = 1.88;
+            address = "北京市";
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            running() {
+                console.log(this.name + this.age)
+            }
+        }
+        const p = new Person("poro", 18)
+        p.running();
+
+        // class Student{
+        //     constructor(name, age, sno, score){
+        //         this.name=name
+        //         this.age=age
+        //         this.sno=sno
+        //         this.score=score
+        //     }
+        //     running(){
+        //         console.log(this.name+this.age)
+        //     }   
+        //     studying(){
+        //         console.log(this.name+this.age+this.sno+this.score)
+        //     }
+        // }
+        // const S=new Student("poro",18,110,100)
+        // S.studying();
+        class Student1 extends Person {
+            constructor(name, age, sno, score) {
+                super(name, age, sno, score)
+                this.sno = sno
+                this.score = score
+            }
+            studying() {
+                console.log(this.name, this.age, this.sno, this.score, "studing");
+            }
+        }
+        const stu1 = new Student1("why", 18, 110, 100);
+        stu1.studying();
+    </script> -->
+    <!--  渲染列表 -->
+    <!-- <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    movies: ["星际穿越", "大话西游", "盗梦空间", "少年派"],
+                    counter: 0
+                }
+            }
+            render() {
+                // var movieLis = [];
+                // for (var i in this.state.movies) {
+                //   movieLis.push((<li>{this.state.movies[i]}</li>));
+                // }
+                return (
+                    <div>
+                        <h1>电影列表</h1>
+                        <ul>
+                            {
+                                this.state.movies.map((item, index) => {
+                                    return (<li>{item} </li>)
+                                })
+                            }
+                        </ul>
+                        <h2>当前计时:{this.state.counter}</h2>
+                        <button onClick={this.increment.bind(this)}>++ </button>
+                        <button onClick={this.decrement.bind(this)}>--</button>
+                    </div>
+                )
+            }
+            increment() {
+                console.log(this, "this2++")
+                this.setState({
+
+                    counter: this.state.counter + 1
+                })
+            }
+            decrement() {
+                console.log(this, "this2--")
+                this.setState({
+                    counter: this.state.counter - 1
+                })
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script> -->
+    <!-- JSX变量 -->
+    <!-- <script type="text/babel">
+        class App extends React.PureComponent {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    name: "poro",
+                    age: 18,
+                    hobbies: ["篮球", "鸡", "你太美"],
+
+                    test1: null,
+                    test2: undefined,
+                    flag: false,
+
+                    friend: {
+                        name: "kobe",
+                        age: 40
+                    }
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        { /*WOSHI1ZHUSH1I*/}
+                        <div>hello world</div>
+
+                        <div>
+                            {/* 可以直接显示的*/}
+                            <div>{this.state.name}</div>
+                            <div>{this.state.age}</div>
+                            <div>{this.state.hobbies}</div>
+                            { /*不显示的*/}
+                            <div>{this.state.test1}</div>
+                            <div>{this.state.test1 + ""}</div>
+                            <div>{this.state.test2}</div>
+                            <div>{this.state.test2 + ""}</div>
+                            <div>{this.state.flag}</div>
+                            <div>{this.state.flag + ""}</div>
+                         
+                        </div>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"));
+    </script> -->
+    <!-- 案例 true false -->
+    <!-- <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    flag: true
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        {this.state.flag ? <h2>你好</h2> : null}
+                        {this.state.flag && <h2>你好</h2>}
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"));
+    </script> -->
+    <!-- jsx表达式 -->
+    <!-- <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    falseName: "Kobe",
+                    lastName: "bryant",
+                    age: 20
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        {/* 运算符表达式 */}
+                        <h2> {this.state.falseName + this.state.lastName}</h2>
+                        { }
+                        <h2> {this.sayHello("poro")}</h2>
+                        { }
+                        <h2>{this.state.age > 18 ? "成年人 " : "未成年"}</h2>
+                    </div>
+                )
+            }
+            sayHello(name) {
+                return "hello" + name
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script> -->
+    <!-- jsx绑定属性 -->
+    <!-- <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    title: "你好啊",
+                    imgUrl: "https://upload.jianshu.io/users/upload_avatars/1102036/c3628b478f06.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240",
+                    link: "https://www.baidu.com",
+                    active: true
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        <h2 title={this.state.title}></h2>
+                        <img src={this.state.imgUrl} alt="" />
+                        <a href={this.state.link}></a>
+                        <div className={"message " + (this.state.active ? "active" : "")}>你好</div>
+                        <div className={["message", (this.state.active ? "active" : "")].join(" ")}>你好啊</div>
+                        <div style={{ fontSize: "30px", color: "red", background: "blue" }} >我是文本 </div>
+                    </div>
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script> -->
+
+    <!-- jsx的时间监听 -->
+    <!-- <script type="text/babel">
+        class App extends React.PureComponent {
+            constructor(props) {
+                super(props)
+
+            }
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.btnClick}>点我一下(React)</button>
+                    </div>
+                )
+            }
+            btnClick() {
+                console.log("React按钮点击了一下")
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script> -->
+
+    <!-- jsx的this 在 constructor绑定this -->
+    <!-- <script type="text/babel">
+        class App extends React.PureComponent {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    message: "你好啊,李银河"
+                }
+                this.btnClick = this.btnClick.bind(this);
+            }
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.btnClick}>点我一下(React)</button>
+                        <button onClick={this.btnClick}>也点我一下(React)</button>
+                    </div>
+                )
+            }
+            btnClick() {
+                console.log(this);
+                console.log(this.state.message);
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script>-->
+    <!-- jsx的this 用es6的箭头函数 去找外层this了  class fields 语法-->
+
+    <!-- jsx的this 用es6的箭头函数 当前函数中的this会去上一个作用域中查找-->
+    <!-- <script type="text/babel">
+        class App extends React.PureComponent {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    message: "你好啊,李银河"
+                }
+
+            }
+            render() {
+                return (
+                    <div>
+                        <button onClick={() => { this.btnClick() }}>点我一下(React)</button>
+                        <button onClick={() => { this.btnClick() }}>也点我一下(React)</button>
+                    </div>
+                )
+            }
+            btnClick() {
+                console.log(this);
+                console.log(this.state.message);
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script> -->
+    <!-- 三元渲染 -->
+    <!-- <script type="text/babel">
+        class App extends React.PureComponent {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    flag: false,
+                    username: "poro"
+                }
+            }
+            render() {
+                {/* v-show效果*/ }
+                const { flag, username } = this.state
+                const nameDisplay = flag ? "block" : "none"
+                return (
+                    <div>
+                        <h2 style={{ display: nameDisplay }}>{this.state.flag ? "欢迎回来" : "请先登录"} {username}</h2>
+                        <button onClick={this.btnLogin}> {this.state.flag ? "退出" : "登录"}</button>
+                    </div>
+                )
+            }
+            btnLogin = () => {
+                this.setState({
+                    flag: !this.state.flag
+                })
+            }
+
+        }
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script> -->
+    <!-- 列表渲染 -->
+    <script type="text/babel">
+        class App extends React.PureComponent {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    list: [10, 30, 120, 453, 55, 78, 111, 222]
+                }
+            }
+            render() {
+                const jsx = (
+                    <div>
+                        <h2>数字列表</h2>
+                        <div>
+                            {
+                                this.state.list.filter(item => item > 50).slice(0, 3).map(item => <div>{item}</div>)
+                            }
+                        </div>
+                    </div>
+                )
+                console.log(jsx)
+                return jsx
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script>
+</body>
+
+</html>
